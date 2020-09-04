@@ -1,14 +1,16 @@
 import React from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
+import Join from "./components/Join";
+import Chat from "./components/Chat";
 
 export const useRoutes = () => {
     return (
         <Switch>
             <Route path="/" exact>
-                <h1>Join</h1>
+                <Join />
             </Route>
             <Route path="/chat" exact>
-                <h1>Chat</h1>
+                <Chat />
             </Route>
             <Redirect to="/" />
         </Switch>
