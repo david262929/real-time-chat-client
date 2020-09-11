@@ -14,11 +14,11 @@ const Join = () => {
         })
     }
 
-    const clickHandler = async () => {
+    const clickHandler = async event => {
         try{
-            // const data = await request('/api/auth/login', 'POST', {...form});
-            // auth.login(data.token, data.userId);
-            // message(data.message);
+            if(!form.room || !form.room){
+                event.preventDefault();
+            }
         }catch (e) {}
     }
 
@@ -62,13 +62,13 @@ const Join = () => {
                         </div>
                     </div>
                     <div className="card-action">
-                        <button
+                        <Link to={`/chat?name=${form.name}&room=${form.room}`}
                             onClick={clickHandler}
                             className={"btn yellow darken-4"} style={{marginRight: 10}}
                             // disabled={loading}
                         >
-                            Login
-                        </button>
+                            Sign In
+                        </Link>
                     </div>
                 </div>
             </div>
