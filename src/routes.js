@@ -6,12 +6,8 @@ import Chat from "./components/Chat";
 export const useRoutes = () => {
     return (
         <Switch>
-            <Route path="/" exact>
-                <Join />
-            </Route>
-            <Route path="/chat" exact>
-                <Chat />
-            </Route>
+            <Route path="/" exact component={Join}/>
+            <Route path="/chat" exact  component={Chat}/>
             <Redirect to="/" />
         </Switch>
     )
