@@ -7,7 +7,6 @@ let socket;
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    console.log({room, name});
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const ENDPOINT = 'localhost:5002'
@@ -33,20 +32,22 @@ const Chat = ({ location }) => {
     }, [ENDPOINT, location.search])
 
     useEffect(() => {
-        socket.on('message',  () => {
-            setMessages([...messages, message])
+        socket.on('message', ({user, text}) => {
+            setMessages([...messages, text])
         })
     }, [messages])
 
     const sendMessage = event => {
         event.preventDefault();
-        console.log(message)
-        if(message) {
-            socket.emit('sendMessage', message, () => setMessage(''))
+        if(message && message !== "") {
+            socket.emit('sendMessage', message, () => {
+                setMessage('')
+            })
+            console.log(message);
         }
     }
 
-    console.log( message, messages )
+    console.log( 'data', {message, messages} )
 
     return (
         <div className="outerContainer">
@@ -55,8 +56,18 @@ const Chat = ({ location }) => {
                 <input
                     type="text"
                     value={message}
-                    onChange={event => setMessage(event.target.value)}
-                    onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+                    onChange={event => {
+                        const { target: {value} } = event;
+                        setMessage(value)
+                    }}
+                    onKeyPress={event => {
+                        const {key, target: {value} } = event;
+                        if(key !== "Enter" || value === ""){
+                            return;
+                        }
+                        setMessage(value);
+                        sendMessage(event);
+                    }}
                 />
             </div>
         </div>
