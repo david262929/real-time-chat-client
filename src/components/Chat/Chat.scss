@@ -1,0 +1,128 @@
+.chat{
+  width: 100%;
+  .chat-title{
+    padding: 0 .75rem;
+  }
+  .card{
+    .card-panel{
+      width: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0;
+      z-index: 2;
+    }
+    .card-content {
+      width: 100%;
+      height: calc(100% - 100px);
+      justify-content: end;
+      padding: 0;
+      [class*="react-scroll-to-bottom--"]{
+        padding: 24px;
+        &[type="button"]{
+          display: none;
+        }
+      }
+      .message{
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: end;
+        margin-top: .6em;
+        padding: .6em 0;
+        z-index: 1;
+        .thumb{
+          overflow: hidden;
+          height: 2em;
+          width: 2em;
+          border-radius: 50%;
+          background-color: grey;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+        }
+        .text{
+          margin: 0 .35em;
+          max-width: 70%;
+          padding: .5em;
+          position: relative;
+          border-radius: .8em;
+          border-top-left-radius: 0;
+          background-color: #4db6ac;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+          word-break: break-word;
+          text-align: initial;
+          .typing-progress{
+            width: 3em;
+            .dot-loader {
+              height: .6em;
+              width: .6em;
+              border-radius: 50%;
+              background-color: whitesmoke;
+              position: relative;
+              animation: 1.2s grow ease-in-out infinite;
+              box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 2px 10px 0 rgba(255, 255, 255, 0.19);
+            }
+            .dot-loader--2 {
+              animation: 1.2s grow ease-in-out infinite 0.15555s;
+            }
+            .dot-loader--3 {
+              animation: 1.2s grow ease-in-out infinite 0.3s;
+            }
+            @keyframes grow {
+              0%, 40%, 100% {
+                transform: scale(0);
+              }
+              40% {
+                transform: scale(.75);
+              }
+            }
+          }
+        }
+
+        &.me + .me{
+          margin: 0;
+          padding-top: 0;
+        }
+
+        &.them{
+          flex-direction: row-reverse;
+          .thumb{
+            display: none;
+          }
+          .text{
+            border-top-left-radius: .8em;
+            border-top-right-radius: 0;
+            color: #4db6ac;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          }
+          & + .them{
+            margin: 0;
+            padding-top: 0;
+          }
+        }
+
+      }
+    }
+
+    .card-actions {
+      width: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+      .input-area{
+        width: 80%;
+        height: 100%;
+        padding-left: 1.7em;
+        textarea{
+          overflow: scroll;
+          padding-top: 0.7em;
+          max-height: 42px;
+        }
+      }
+      .btn-area{
+        width: 20%;
+        height: 100%;
+      }
+    }
+    flex-direction: column;
+    height: 500px;
+  }
+}
