@@ -41,7 +41,7 @@
         .text{
           margin: 0 .35em;
           max-width: 70%;
-          padding: .5em;
+          padding: .7em .5em;
           position: relative;
           border-radius: .8em;
           border-top-left-radius: 0;
@@ -75,6 +75,11 @@
               }
             }
           }
+        }
+        .sender-name{
+          color: grey;
+          font-size: .85em;
+          align-self: center;
         }
 
         &.me + .me{

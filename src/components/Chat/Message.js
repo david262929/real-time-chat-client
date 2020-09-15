@@ -7,7 +7,7 @@ const getTypingProgress = () => (<div className="typing-progress d-flex jc-sp_bt
 </div>)
 
 const Message = ({data} ) => {
-    const {text, thumbUrl} = data;
+    const {text, thumbUrl, name} = data;
     let type = data.type || 'message';
     let isSentMe = data.isSentMe;
     isSentMe = typeof isSentMe !== 'undefined' ? isSentMe : true;
@@ -22,6 +22,7 @@ const Message = ({data} ) => {
         <div className={`message ${(isSentMe ? "me" : "them")}`}>
             <div className="thumb" style={{backgroundImage : `url('${thumbUrl}')`}}></div>
             <div className="text">{content}</div>
+            {(isSentMe ? <div className="sender-name">{name}</div> : "")}
         </div>
     )
 }

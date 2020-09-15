@@ -15,11 +15,12 @@ const Chat = ({ location }) => {
     const [messages, setMessages] = useState([]);
     const ENDPOINT = 'localhost:5002';
 
-    const _messages_ = [
+    const _test_messages_ = [
         {
             isSentMe : true,
             thumbUrl : 'https://davidghazaryan.ga/',
-            text : `Hi br0`,
+            text : `Hi br0000.`,
+            name : 'Name of sender',
         },
         {
             isSentMe : false,
@@ -30,11 +31,13 @@ const Chat = ({ location }) => {
             isSentMe : true,
             thumbUrl : 'https://davidghazaryan.ga/',
             text : `Hru?`,
+            name : 'Name of sender',
         },
         {
             isSentMe : true,
             thumbUrl : 'https://davidghazaryan.ga/',
             text : `?`,
+            name : 'Name of sender',
         },
         {
             isSentMe : false,
@@ -65,11 +68,13 @@ const Chat = ({ location }) => {
             isSentMe : true,
             thumbUrl : 'https://davidghazaryan.ga/',
             text : `OoookO oookOoookOoookOoookOo ookOoook OoookOoook OoookOooo kOoook`,
+            name : 'Anun',
         },
         {
             isSentMe : true,
             thumbUrl : 'https://davidghazaryan.ga/',
             type : 'typing-progress',
+            name : 'Anun',
         },
     ];
 
@@ -129,7 +134,7 @@ const Chat = ({ location }) => {
 
                     <ScrollToBottom className="card-content d-flex jc-sp_btw fd-col">
 
-                        {_messages_.map( (data, key) => <Message data={data} key={key}/>)}
+                        {_test_messages_.map( (data, key) => <Message data={data} key={key}/>)}
                     </ScrollToBottom>
                     <div className="card-actions teal darken-4 white-text d-flex jc-sp_btw">
 
